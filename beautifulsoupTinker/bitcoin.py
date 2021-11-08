@@ -20,7 +20,7 @@ my_frame = Frame(root)
 my_frame.pack(pady=20)
 
 #비트코인 logo 표시
-img = ImageTk.PhotoImage(Image.open('bitcoin.png').resize((100, 100)))
+img = ImageTk.PhotoImage(Image.open('images/bitcoin.png').resize((100, 100)))
 logo_label = Label(my_frame, image=img)
 logo_label.grid(row=0, column=0)
 

@@ -1,27 +1,39 @@
+"""
+1) 다음의 출력 결과는 ?
+"""
+d = {'a': 2, 'b': 4, 'c': 9}
+for x in sorted(d):
+    print(d[x], end="")
 
 """
-피보나치 수열(Fibonacci Sequence)을 계산하는 프로그램도 파이썬으로 간단히 작성할 수
-있다.
-
-피보나치 수열은 0 과 1 로 시작하고 다음의 숫자는 이전 숫자 두개를 더한 숫자들로
-이루어 진다.
-0, 1, 1, 2, 3, 5, 8, 13 ......
-
-n 개의 숫자로 이루어진 피보나치 수열을 출력하는 함수를 작성하라.
+2) 다음의 출력 결과는 ?
 """
-def fib(n):
-    if n == 0:
-        return 0
-    if n == 1:
-        return 1
-    
-    old, new = 0, 1
-    for _ in range(n):
-        old, new = new, old + new
-    return old
+d = {'a': 2, 'b': 4, 'c': 9}
+for x in sorted(d.values()):
+    print(x, end="")
+#%%
+"""
+3) 다음의 출력 결과는 ?
+"""
+d = {'a': 21, 'b': 4, 'c': 9}
+for x in sorted(d.items()):
+    print(x, end="")
+#%%
+d = {'a': 21, 'b': 4, 'c': 9}
+print(sorted(d.items(), key=lambda kv: kv[1]))
 
-lst = []
-for i in range(10):
-    lst.append(fib(i))
+"""
+4) 두개의 주사위를 던져서 두 주사위의 합이 같은 것끼리 출력
+"""
+d = {}
 
-print(lst)
+for dice1 in range(1, 7):
+    for dice2 in range(1, 7):
+        newTuple = (dice1, dice2)
+        added = dice1 + dice2
+        if added not in d:
+            d[added] = []
+        d[added].append(newTuple)
+
+print(d)
+

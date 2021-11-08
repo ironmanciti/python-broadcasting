@@ -1,46 +1,29 @@
-class Car:
-    def __init__(self, color='red', power=2000):
-        self.color = color
-        self.power = power
-        self.speed = 0
+# HTML 에서 BABY 이름 찾기
+"""
+step 1 - https://developers.google.com/edu/python/exercises/baby-names 에서
+file download 하여 babynames directory 로 save
 
-    def forward(self, speed):
-        self.speed += speed
-        return '앞으로 전진 : 시속 {} km'.format(self.speed)
+step 2 - <tr align="right"><td>1</td><td>Michael</td><td>Jessica</td> 에
+match 되는 정규표현식을 이용하여 (rank, boy-name, girl-name) tuples 추출하여
+print
 
-    def backward(self):
-        pass
+"""
+import sys
+import re
 
-class Sonata(Car):
-    def __init__(self, color, power, size):
-        super().__init__(color, power)
-        self.size = size
+def extract_name(filename):
+    names = []
+    f = open(filename, 'r')
+    text = f.read()
+    tuples = re.findall(r'<td>(\d+)</td><td>(\w+)</td><td>(\w+)</td>', text)
+    for tup in tuples:
+        print(tup[0], tup[1], tup[2])
 
-    def backward(self, speed):
-        self.speed -= speed
-        return '뒤로 후진 : 시속 {} km'.format(self.speed)
+if __name__ == '__main__':
+    args = sys.argv[1:]
+    if not args:
+        print("file 명을 parameter 로 입력 바랍니다.")
+        sys.exit(1)
 
-class Volvo(Car):
-    def __init__(self, color, power, size, price):
-        super().__init__(color, power)
-        self.size = size
-        self.price = price
-
-    def forward(self, speed):
-        self.speed = speed * 2
-        return "시속 {} km 로 달리는 Volvo".format(self.speed)
-
-    def backward(self):
-        return "후진 불가"
-
-sonata = Sonata('black', 1800, 5)
-volvo = Volvo('white', 2500, 7, 5000000)
-
-print(sonata.color)
-print(sonata.forward(100))
-print(sonata.backward(30))
-
-print(volvo.color)
-print(volvo.price)
-print(volvo.forward(100))
-print(volvo.backward())
+    filename = './babynames/' + args[0]
+    extract_name(filename)
