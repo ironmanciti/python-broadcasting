@@ -17,6 +17,9 @@ def fib(n):
     
     old, new = 0, 1
     for _ in range(n):
+        #         tmp = old + new
+        #         old = new
+        #         new = tmp
         old, new = new, old + new
     return old
 
