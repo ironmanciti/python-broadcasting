@@ -1,3 +1,3 @@
-# 알고리즘으로 배우는 파이썬 - 2021
+# Python을 활용한 자동화 프로그래밍 과정 - 2022
 "# python-broadcasting" 
 "# python-broadcasting" 
